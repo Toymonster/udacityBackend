@@ -23,7 +23,6 @@ def index():
 
 @app.route('/drivers')
 def drivers_list():
-    # added a comment here to check whether changes are pushed to github
     drivers = db.session.query(Driver).all()
     html = "<table border='1'>"
     html += "<tr><th>ID</th><th>First Name</th><th>Last Name</th></tr>"
