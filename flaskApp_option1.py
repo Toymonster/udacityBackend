@@ -23,9 +23,15 @@ def index():
 
 @app.route('/drivers')
 def drivers_list():
-    # This route is already inside app context, so it's safe
+    # added a comment here to check whether changes are pushed to github
     drivers = db.session.query(Driver).all()
-    return "<br>".join(driver.first_name for driver in drivers)
+    html = "<table border='1'>"
+    html += "<tr><th>ID</th><th>First Name</th><th>Last Name</th></tr>"
+    for driver in drivers:
+        html += f"<tr><td>{driver.id}</td><td>{driver.first_name}</td><td>{driver.last_name}</td></tr>"
+    html += "</table>"
+    return html
+
 
 @app.route('/vehicles')
 def vehicles_list():
