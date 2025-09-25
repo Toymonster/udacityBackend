@@ -19,12 +19,12 @@ with app.app_context():
 
 @app.route('/')
 def index():
-    return "Index page"
+    return "Hello World JONATHAN"
 
 @app.route('/drivers')
 def drivers_list():
     drivers = db.session.query(Driver).all()
-    html = "<table border='1'>"
+    html = '<table border="1" style="border-color: blue;">'
     html += "<tr><th>ID</th><th>First Name</th><th>Last Name</th></tr>"
     for driver in drivers:
         html += f"<tr><td>{driver.id}</td><td>{driver.first_name}</td><td>{driver.last_name}</td></tr>"
@@ -34,7 +34,6 @@ def drivers_list():
 
 @app.route('/vehicles')
 def vehicles_list():
-    # This route is already inside app context, so it's safe
     vehicles = db.session.query(Vehicle).all()
     html = "<table border='1'>"
     html += "<tr><th>ID</th><th>Make</th><th>Model</th><th>Driver ID</th></tr>"
